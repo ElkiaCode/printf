@@ -6,7 +6,7 @@
 /*   By: cparodi <cparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:09:56 by cparodi           #+#    #+#             */
-/*   Updated: 2024/05/07 16:21:13 by cparodi          ###   ########.fr       */
+/*   Updated: 2024/05/10 15:03:37 by cparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(args);
+	ft_putstr_fd("coucou\n", 1);
 	return (total);
 }
