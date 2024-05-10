@@ -6,7 +6,7 @@
 /*   By: cparodi <cparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:21:20 by cparodi           #+#    #+#             */
-/*   Updated: 2024/05/10 14:28:28 by cparodi          ###   ########.fr       */
+/*   Updated: 2024/05/10 16:53:12 by cparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int		ft_make_X(va_list args);
 int		ft_make_percent(va_list args);
 
 void	ft_putnbr_u_fd(unsigned int n, int fd);
+void	ft_putnbr_hex(unsigned long n, char *base, int fd);
 
 #endif

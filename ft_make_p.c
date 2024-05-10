@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_make_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cparodi <cparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 14:09:56 by cparodi           #+#    #+#             */
-/*   Updated: 2024/05/07 16:21:13 by cparodi          ###   ########.fr       */
+/*   Created: 2024/05/10 16:57:44 by cparodi           #+#    #+#             */
+/*   Updated: 2024/05/10 17:12:47 by cparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_make_p(va_list args)
 {
-	int		total;
-	int		i;
-	va_list	args;
+	unsigned long	address;
+	void			*ptr;
+	int				i;
 
 	i = 0;
-	total = 0;
-	va_start(args, format);
-	while (format[i])
+	ptr = (void *)va_arg(args, void *);
+	address = (unsigned long)ptr;
+	if (address == 0)
 	{
-		if (format[i] == '%')
-		{
-			i++;
-			total += ft_parsing_format(format[i], args);
-		}
-		else
-		{
-			ft_putchar_fd(format[i], 1);
-			total++;
-		}
+		ft_putstr_fd("(nil)", 1);
+		return (5);
+	}
+	ft_putstr_fd("0x", 1);
+	ft_putnbr_hex(address, "0123456789abcdef", 1);
+	while (address != 0)
+	{
+		address /= 16;
 		i++;
 	}
-	va_end(args);
-	return (total);
+	return (i + 2);
 }

@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cparodi <cparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 14:09:56 by cparodi           #+#    #+#             */
-/*   Updated: 2024/05/07 16:21:13 by cparodi          ###   ########.fr       */
+/*   Created: 2024/05/10 15:29:50 by cparodi           #+#    #+#             */
+/*   Updated: 2024/05/10 16:47:04 by cparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+static void	ft_putnbr_run(unsigned long n, char *base, int fd)
 {
-	int		total;
-	int		i;
-	va_list	args;
+	int	i;
 
-	i = 0;
-	total = 0;
-	va_start(args, format);
-	while (format[i])
+	i = ft_strlen(base);
+	if (n > 0)
 	{
-		if (format[i] == '%')
-		{
-			i++;
-			total += ft_parsing_format(format[i], args);
-		}
-		else
-		{
-			ft_putchar_fd(format[i], 1);
-			total++;
-		}
-		i++;
+		ft_putnbr_run(n / i, base, fd);
+		ft_putchar_fd(base[n % i], fd);
 	}
-	va_end(args);
-	return (total);
+}
+
+void	ft_putnbr_hex(unsigned long n, char *base, int fd)
+{
+	if (n == 0)
+		ft_putchar_fd(base[0], fd);
+	else
+		ft_putnbr_run(n, base, fd);
 }

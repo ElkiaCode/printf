@@ -6,17 +6,21 @@
 #    By: cparodi <cparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/22 09:30:05 by cparodi           #+#    #+#              #
-#    Updated: 2024/05/10 14:28:46 by cparodi          ###   ########.fr        #
+#    Updated: 2024/05/10 17:13:50 by cparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS    = 	ft_printf.c \
 			ft_putnbr_u_fd.c \
+			ft_putnbr_hex.c \
 			ft_parsing_format.c \
 			ft_make_c.c \
 			ft_make_s.c \
+			ft_make_p.c \
 			ft_make_d.c \
 			ft_make_u.c \
+			ft_make_x.c \
+			ft_make_X.c \
 			ft_make_percent.c
 
 NAME    = libftprintf.a
